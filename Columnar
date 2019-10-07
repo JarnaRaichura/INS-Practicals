@@ -1,0 +1,68 @@
+
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+void main()
+{
+	int i,j,k,ch,length_plain,length_key,length,l,m,n;
+	char plain[100],key[100],map[26][26],encr[100],decr[100];
+	clrscr();
+	printf("enter the plaintext: ");
+	gets(plain);
+	printf("enter the key: ");
+	gets(key);
+	k=97;
+	for(i=0;i<26;i++)
+	{
+		ch=k;
+		for(j=0;j<26;j++)
+		{
+			map[i][j]=ch;
+			if(ch<122)
+			{
+				ch++;
+			}
+			else
+			{
+				ch=97;
+			}}
+		k++;	}
+	length_plain=strlen(plain);
+	length_key=strlen(key);
+	length=length_key;
+	l=length_plain-length_key;
+	j=0;
+	for(i=0;i<l;i++)
+	{		key[length_key]=key[j];
+		if(j==length-1)
+		{
+			j=0;
+		}
+		else
+		{
+			j++;
+		}
+		length_key++;
+	}
+	printf("\nencryption: ");
+	for(i=0;i<length_plain;i++)
+	{
+		n=plain[i]-97;
+		m=key[i]-97;
+		encr[i]=map[m][n]     vb bv bc xxxxx              ;
+		printf("%c",encr[i]);
+	}
+	printf("\ndecryption: ");
+	for(i=0;i<length_plain;i++)
+	{
+		m=key[i]-97;
+		j=0;
+		while(encr[i]!=map[m][j])
+		{
+			j++;
+		}
+		decr[i]=97+j;
+		printf("%c",decr[i]);
+	}
+getch();
+}
