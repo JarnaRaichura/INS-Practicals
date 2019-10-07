@@ -1,0 +1,39 @@
+#include<stdio.h>
+
+void main()
+{
+	char p[30],c[30],d[30];
+	int i,j,k;
+	clrscr();
+	printf("enter the plain text:");
+	gets(p);
+	for(i=0,j=0;j<strlen(p);i++)
+	{
+		printf("%c",p[j]);
+		c[i]=p[j];
+		j+=2;
+	}
+	printf("\n");
+	for(j=1;j<strlen(p);i++)
+	{
+		printf("%c",p[j]);
+		c[i]=p[j];
+		j+=2;
+	}
+	for(i=strlen(p);i<30;i++)
+	{
+		c[i]=NULL;
+	}
+	printf("encrypted text:");
+	puts(c);
+	k=(strlen(c)+1)/2;
+	for(i=0,j=0;j<strlen(c);i++)
+	{
+		d[j++]=c[i];
+		d[j++]=c[k+i];
+	}
+	printf("\n Decrypted text:");
+	puts(d);
+	getch();	
+}
+
