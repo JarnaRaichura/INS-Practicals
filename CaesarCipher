@@ -1,0 +1,36 @@
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+void main()
+{  int i,j,l,b,no;
+   char a[100];
+   clrscr();
+   printf("enter the message");
+   gets(a);
+   printf("enter key");
+   scanf("%d",&no);
+   l=strlen(a);
+   for(i=0;i<l;i++)
+   {
+     j=a[i];
+	     j+=no;
+	     if(isupper(a[i]))
+	     {if(j<65)
+	      {
+		 b=65-j;
+		 j=91-b; }
+		   else if(j>90)
+	       {
+			     b=j-90;
+			     j=64+b;}	      }
+	      else if(islower(a[i]))
+	      {
+		if(j<97)
+		{
+		   b=97-j;
+		   j=123-b;}
+		else if(j>122){	    b=j-122;
+			    j=96+b;}	      }
+		    printf("%c",j);  }
+		    getch();   
+}
