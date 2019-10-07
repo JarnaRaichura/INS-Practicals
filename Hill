@@ -1,0 +1,73 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+void main()
+{
+                int pla[100],t1[100],t,sum,temp,a,b,c,i,j,k;
+                char plain[100],cipher[100],t2[100];
+                int array[3][3]={{17,17,5},{21,18,21},{2,2,19}};
+                int array1[3][3]={{4,9,15},{15,17,6},{24,0,17}};
+		    printf("Enter the String Into Lower Case:\n");
+	          gets(plain);
+                b=strlen(plain);
+                t=b%3;
+                if(t==1)
+                {
+                                plain[b++]='x';
+                                plain[b++]='x';
+                                plain[b++]=NULL;
+                }
+                else if(t==2)
+                {
+                                plain[b++]='x';
+                                plain[b++]=NULL;
+                }
+                a=strlen(plain);
+                for(i=0;i<a;i++)
+                {
+                                temp=plain[i];
+                                temp=temp%97;
+                                pla[i]=temp;
+                }
+                printf("\n");
+                for(i=0;i<a;i=i+3)
+                {
+                                for(j=0;j<3;j++)
+                                {
+                                                pla[0]=pla[i];
+                                                pla[1]=pla[i+1];
+                                                pla[2]=pla[i+2];
+                                                sum=0;
+                                                for(k=0;k<3;k++)
+                                                {
+                                                                sum+=pla[k]*array[j][k];
+                                                }
+                                                t1[i+j]=sum%26;
+                                                sum=(sum%26)+97;
+                                                cipher[i+j]=sum;
+                                }
+                }
+                cipher[a]='\0';
+                puts("The ciphertext is ");
+                puts(cipher);
+                printf("\n");
+                for(i=0;i<a;i=i+3)
+                {
+                                for(j=0;j<3;j++)
+                                {
+                                                t1[0]=t1[i];
+                                                t1[1]=t1[i+1];
+                                                t1[2]=t1[i+2];
+                                                sum=0;
+                                                for(k=0;k<3;k++)
+                                                {
+                                                                sum+=t1[k]*array1[j][k];
+                                                }
+                                                sum=(sum%26);
+                                                t2[i+j]=sum+97;
+                                }
+                }
+                t2[a]=NULL;
+                printf("The original Text Is \n");
+                puts(t2);
+               }
